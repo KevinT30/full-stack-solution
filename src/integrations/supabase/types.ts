@@ -14,16 +14,262 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      appointments: {
+        Row: {
+          appointment_date: string
+          created_at: string
+          created_by: string | null
+          doctor_id: string
+          end_time: string
+          id: string
+          notes: string | null
+          patient_id: string
+          reason: string | null
+          start_time: string
+          status: Database["public"]["Enums"]["appointment_status"]
+          updated_at: string
+        }
+        Insert: {
+          appointment_date: string
+          created_at?: string
+          created_by?: string | null
+          doctor_id: string
+          end_time: string
+          id?: string
+          notes?: string | null
+          patient_id: string
+          reason?: string | null
+          start_time: string
+          status?: Database["public"]["Enums"]["appointment_status"]
+          updated_at?: string
+        }
+        Update: {
+          appointment_date?: string
+          created_at?: string
+          created_by?: string | null
+          doctor_id?: string
+          end_time?: string
+          id?: string
+          notes?: string | null
+          patient_id?: string
+          reason?: string | null
+          start_time?: string
+          status?: Database["public"]["Enums"]["appointment_status"]
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "appointments_doctor_id_fkey"
+            columns: ["doctor_id"]
+            isOneToOne: false
+            referencedRelation: "doctors"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "appointments_patient_id_fkey"
+            columns: ["patient_id"]
+            isOneToOne: false
+            referencedRelation: "patients"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      doctor_schedules: {
+        Row: {
+          created_at: string
+          doctor_id: string
+          end_time: string
+          id: string
+          start_time: string
+          weekday: number
+        }
+        Insert: {
+          created_at?: string
+          doctor_id: string
+          end_time: string
+          id?: string
+          start_time: string
+          weekday: number
+        }
+        Update: {
+          created_at?: string
+          doctor_id?: string
+          end_time?: string
+          id?: string
+          start_time?: string
+          weekday?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "doctor_schedules_doctor_id_fkey"
+            columns: ["doctor_id"]
+            isOneToOne: false
+            referencedRelation: "doctors"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      doctors: {
+        Row: {
+          active: boolean
+          bio: string | null
+          consultation_duration_min: number
+          created_at: string
+          email: string | null
+          full_name: string
+          id: string
+          license_number: string | null
+          phone: string | null
+          specialty: string
+          user_id: string | null
+        }
+        Insert: {
+          active?: boolean
+          bio?: string | null
+          consultation_duration_min?: number
+          created_at?: string
+          email?: string | null
+          full_name: string
+          id?: string
+          license_number?: string | null
+          phone?: string | null
+          specialty: string
+          user_id?: string | null
+        }
+        Update: {
+          active?: boolean
+          bio?: string | null
+          consultation_duration_min?: number
+          created_at?: string
+          email?: string | null
+          full_name?: string
+          id?: string
+          license_number?: string | null
+          phone?: string | null
+          specialty?: string
+          user_id?: string | null
+        }
+        Relationships: []
+      }
+      patients: {
+        Row: {
+          address: string | null
+          allergies: string | null
+          blood_type: string | null
+          created_at: string
+          date_of_birth: string | null
+          email: string | null
+          full_name: string
+          gender: Database["public"]["Enums"]["gender"] | null
+          id: string
+          notes: string | null
+          phone: string | null
+          user_id: string | null
+        }
+        Insert: {
+          address?: string | null
+          allergies?: string | null
+          blood_type?: string | null
+          created_at?: string
+          date_of_birth?: string | null
+          email?: string | null
+          full_name: string
+          gender?: Database["public"]["Enums"]["gender"] | null
+          id?: string
+          notes?: string | null
+          phone?: string | null
+          user_id?: string | null
+        }
+        Update: {
+          address?: string | null
+          allergies?: string | null
+          blood_type?: string | null
+          created_at?: string
+          date_of_birth?: string | null
+          email?: string | null
+          full_name?: string
+          gender?: Database["public"]["Enums"]["gender"] | null
+          id?: string
+          notes?: string | null
+          phone?: string | null
+          user_id?: string | null
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          avatar_url: string | null
+          created_at: string
+          full_name: string
+          id: string
+          phone: string | null
+          updated_at: string
+        }
+        Insert: {
+          avatar_url?: string | null
+          created_at?: string
+          full_name: string
+          id: string
+          phone?: string | null
+          updated_at?: string
+        }
+        Update: {
+          avatar_url?: string | null
+          created_at?: string
+          full_name?: string
+          id?: string
+          phone?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      user_roles: {
+        Row: {
+          created_at: string
+          id: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          role?: Database["public"]["Enums"]["app_role"]
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      get_user_role: {
+        Args: { _user_id: string }
+        Returns: Database["public"]["Enums"]["app_role"]
+      }
+      has_role: {
+        Args: {
+          _role: Database["public"]["Enums"]["app_role"]
+          _user_id: string
+        }
+        Returns: boolean
+      }
     }
     Enums: {
-      [_ in never]: never
+      app_role: "admin" | "doctor" | "patient"
+      appointment_status:
+        | "pending"
+        | "confirmed"
+        | "cancelled"
+        | "attended"
+        | "no_show"
+      gender: "male" | "female" | "other"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -150,6 +396,16 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      app_role: ["admin", "doctor", "patient"],
+      appointment_status: [
+        "pending",
+        "confirmed",
+        "cancelled",
+        "attended",
+        "no_show",
+      ],
+      gender: ["male", "female", "other"],
+    },
   },
 } as const
