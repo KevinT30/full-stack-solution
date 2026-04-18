@@ -66,6 +66,13 @@ export type Database = {
             referencedColumns: ["id"]
           },
           {
+            foreignKeyName: "appointments_doctor_id_fkey"
+            columns: ["doctor_id"]
+            isOneToOne: false
+            referencedRelation: "doctors_public"
+            referencedColumns: ["id"]
+          },
+          {
             foreignKeyName: "appointments_patient_id_fkey"
             columns: ["patient_id"]
             isOneToOne: false
@@ -105,6 +112,13 @@ export type Database = {
             columns: ["doctor_id"]
             isOneToOne: false
             referencedRelation: "doctors"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "doctor_schedules_doctor_id_fkey"
+            columns: ["doctor_id"]
+            isOneToOne: false
+            referencedRelation: "doctors_public"
             referencedColumns: ["id"]
           },
         ]
@@ -246,7 +260,33 @@ export type Database = {
       }
     }
     Views: {
-      [_ in never]: never
+      doctors_public: {
+        Row: {
+          active: boolean | null
+          bio: string | null
+          consultation_duration_min: number | null
+          full_name: string | null
+          id: string | null
+          specialty: string | null
+        }
+        Insert: {
+          active?: boolean | null
+          bio?: string | null
+          consultation_duration_min?: number | null
+          full_name?: string | null
+          id?: string | null
+          specialty?: string | null
+        }
+        Update: {
+          active?: boolean | null
+          bio?: string | null
+          consultation_duration_min?: number | null
+          full_name?: string | null
+          id?: string | null
+          specialty?: string | null
+        }
+        Relationships: []
+      }
     }
     Functions: {
       get_user_role: {
