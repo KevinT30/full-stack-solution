@@ -46,6 +46,11 @@
   --color-input: var(--input);
   --color-ring: var(--ring);
   --color-ring-offset-background: var(--background);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+  --color-primary-soft: var(--primary-soft);
   --color-chart-1: var(--chart-1);
   --color-chart-2: var(--chart-2);
   --color-chart-3: var(--chart-3);
@@ -63,25 +68,37 @@
 
 :root {
   --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.129 0.042 264.695);
+  /* MediCare Pro — Clinical blue & white */
+  --background: oklch(0.99 0.005 220);
+  --foreground: oklch(0.22 0.04 240);
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.129 0.042 264.695);
+  --card-foreground: oklch(0.22 0.04 240);
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.129 0.042 264.695);
-  --primary: oklch(0.208 0.042 265.755);
-  --primary-foreground: oklch(0.984 0.003 247.858);
-  --secondary: oklch(0.968 0.007 247.896);
-  --secondary-foreground: oklch(0.208 0.042 265.755);
-  --muted: oklch(0.968 0.007 247.896);
-  --muted-foreground: oklch(0.554 0.046 257.417);
-  --accent: oklch(0.968 0.007 247.896);
-  --accent-foreground: oklch(0.208 0.042 265.755);
-  --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(0.929 0.013 255.508);
-  --input: oklch(0.929 0.013 255.508);
-  --ring: oklch(0.704 0.04 256.788);
+  --popover-foreground: oklch(0.22 0.04 240);
+  /* Medical blue #0EA5E9 territory */
+  --primary: oklch(0.62 0.16 235);
+  --primary-foreground: oklch(0.99 0.005 220);
+  --primary-soft: oklch(0.95 0.04 230);
+  --secondary: oklch(0.96 0.015 220);
+  --secondary-foreground: oklch(0.3 0.05 240);
+  --muted: oklch(0.965 0.01 220);
+  --muted-foreground: oklch(0.5 0.03 240);
+  --accent: oklch(0.94 0.05 200);
+  --accent-foreground: oklch(0.3 0.06 240);
+  /* Health green */
+  --success: oklch(0.7 0.16 160);
+  --success-foreground: oklch(0.99 0.005 220);
+  --warning: oklch(0.78 0.15 75);
+  --warning-foreground: oklch(0.25 0.05 60);
+  --destructive: oklch(0.6 0.22 25);
+  --destructive-foreground: oklch(0.99 0.005 220);
+  --border: oklch(0.92 0.015 220);
+  --input: oklch(0.92 0.015 220);
+  --ring: oklch(0.62 0.16 235);
+  --gradient-primary: linear-gradient(135deg, oklch(0.62 0.16 235), oklch(0.55 0.18 250));
+  --gradient-soft: linear-gradient(180deg, oklch(0.97 0.02 220), oklch(0.99 0.005 220));
+  --shadow-card: 0 1px 3px oklch(0.5 0.1 240 / 0.08), 0 4px 16px oklch(0.5 0.1 240 / 0.04);
+  --shadow-elevated: 0 8px 32px oklch(0.5 0.15 240 / 0.12);
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
