@@ -33,9 +33,9 @@ cd full-stack-solution
 
 ```bash
 npm install
-# o si prefieres bun:
-# bun install
 ```
+
+> **Nota**: El proyecto usa npm exclusivamente para evitar conflictos de lockfile en Railway.
 
 ### 3. Configurar Supabase
 
@@ -134,7 +134,7 @@ Railway detectará automáticamente la configuración desde `nixpacks.toml`, per
 - **Build Command**: `npm ci && npm run build`
 - **Start Command**: `node dist/server/server.js`
 - **Node Version**: 20
-
+> **Nota**: Eliminamos los archivos de Bun para evitar conflictos de lockfile en Railway.
 ### Paso 5: Desplegar
 
 1. Haz clic en **Deploy** en Railway
