@@ -10,7 +10,7 @@ cmds = ["npm ci || npm install"]
 cmds = ["npm run build"]
 
 [start]
-cmd = "node .output/server/index.mjs"
+cmd = "node dist/server/server.js"
 
 [variables]
 NIXPACKS_NODE_VERSION = "20"
