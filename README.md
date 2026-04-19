@@ -27,11 +27,15 @@ VITE_SUPABASE_PROJECT_ID=lznzrtqextqfyhzybgkb
 > ⚠️ **IMPORTANTE**: Estas son las credenciales de tu proyecto Supabase. Para producción, considera rotar las API keys en tu dashboard de Supabase.
 
 ### 4. Configurar Build y Start Commands
-En Railway → **Settings**:
+El proyecto incluye un `nixpacks.toml` que fuerza a Railway a usar **npm + Node 20** (evitando el error de bun lockfile).
+
+Si necesitas configurar manualmente en Railway → **Settings**:
 
 - **Build Command:** `npm install && npm run build`
-- **Start Command:** `npm start` (o `node .output/server/index.mjs`)
+- **Start Command:** `node .output/server/index.mjs`
 - **Port:** Railway asigna `$PORT` automáticamente
+
+> ⚠️ Si ves el error `bun install --frozen-lockfile ... lockfile had changes`, asegúrate de que `nixpacks.toml` esté en la raíz del repo y haz **Redeploy** en Railway.
 
 ### 5. Generar Dominio
 Railway → **Settings** → **Networking** → **Generate Domain**
