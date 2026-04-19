@@ -6,12 +6,7 @@ import react from "@vitejs/plugin-react";
 
 export default defineConfig({
   plugins: [
-    tanstackStart({
-      server: {
-        preset: "node-server",
-        compatibilityDate: "2025-09-24",
-      },
-    }),
+    tanstackStart(),
     react(),
     tsConfigPaths(),
     tailwindcss(),
