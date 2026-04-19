@@ -10,7 +10,7 @@ cmds = ["npm install --omit=dev --frozen-lockfile"]
 cmds = ["npm run build"]
 
 [start]
-cmd = "node dist/server/server.js"
+cmd = "NODE_ENV=production node dist/server/server.js"
 
 [variables]
 NIXPACKS_NODE_VERSION = "20"

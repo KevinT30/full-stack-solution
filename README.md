@@ -132,7 +132,7 @@ SUPABASE_SERVICE_ROLE_KEY=tu_service_role_key_aqui
 Railway detectará automáticamente la configuración desde `nixpacks.toml`, pero si necesitas ajustes:
 
 - **Build Command**: `npm install --omit=dev --frozen-lockfile && npm run build`
-- **Start Command**: `node dist/server/server.js`
+- **Start Command**: `NODE_ENV=production node dist/server/server.js`
 - **Node Version**: 20
 > **Nota**: Eliminamos los archivos de Bun para evitar conflictos de lockfile en Railway.
 ### Paso 5: Desplegar
